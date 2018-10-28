@@ -1,0 +1,115 @@
+swagger: "2.0"
+
+
+info:
+  title: "The shop"
+  description: ""
+  version: "1.0"
+
+
+basePath: /api/
+
+
+parameters:
+  clientIdParam:
+    name: 'client_id'
+    in: 'query'
+    type: integer
+    required: true
+
+  putOrderBody:
+    name: 'body'
+    in: 'body'
+    required: true
+    schema:
+      $ref: '#/definitions/putOrderBody'
+
+  orderIdParam:
+    name: 'order_id'
+    in: 'path'
+    type: integer
+    required: true
+
+  productIdParam:
+    name: 'product_id'
+    in: 'path'
+    type: integer
+    required: true
+
+paths:
+  /orders/search/:
+    get:
+      tags:
+        - orders
+      operationId: bf_api.endpoints.search
+      parameters:
+        - $ref: '#/parameters/clientIdParam'
+      responses:
+        '200':
+          description: 'Fetch list of client orders'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Order'
+
+  /orders/create/:
+    post:
+      tags:
+        - orders
+      operationId: bf_api.endpoints.create
+      parameters:
+        - $ref: '#/parameters/putOrderBody'
+      responses:
+        '200':
+          description: 'Create new order'
+          schema:
+            $ref: '#/definitions/Order'
+
+  /orders/{order_id}/add_product/{product_id}:
+    put:
+      tags:
+      - orders
+      operationId: bf_api.endpoints.add_product
+      parameters:
+        - $ref: '#/parameters/orderIdParam'
+        - $ref: '#/parameters/productIdParam'
+      responses:
+        '200':
+          description: 'Add new product to existing order'
+          schema:
+            $ref: '#/definitions/Order'
+
+definitions:
+  Client:
+    type: object
+    properties:
+      id: { type: 'integer' }
+      name: { type: 'string' }
+
+  Product:
+    type: object
+    properties:
+      id: { type: 'integer' }
+      name: { type: 'string' }
+      price: { type: 'number' }
+
+  Order:
+    type: object
+    properties:
+      id: { type: integer }
+      created: { type: string }
+      client: { $ref: '#/definitions/Client' }
+      total_cost: { type: number }
+      items:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Product'
+
+  putOrderBody:
+    type: object
+    properties:
+      client_id:
+        type: integer
+        example: 1
+    required:
+    - client_id

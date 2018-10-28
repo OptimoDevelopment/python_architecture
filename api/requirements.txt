@@ -1,0 +1,5 @@
+bf_shop
+bf_ram_db
+flask==1.0.2
+connexion==1.5.3
+Flask-Injector==0.10.1
