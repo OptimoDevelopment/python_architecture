@@ -13,7 +13,7 @@ class OrderLogic:
         order_provider: IOrderProvider,
         product_provider: IProductProvider,
         client_provider: IClientProvider,
-    ):
+    ) -> None:
         self._order_provider: IOrderProvider = order_provider
         self._product_provider: IProductProvider = product_provider
         self._client_provider: IClientProvider = client_provider

@@ -13,7 +13,7 @@ class ElementNotFound(BaseException):
     NOT_FOUND = "Element not found"
     DETAILS = ""
 
-    def __init__(self, detail: Optional[str] = None) -> None:
+    def __init__(self) -> None:
         super().__init__(message=self.NOT_FOUND, detail=self.DETAILS)
 
 
