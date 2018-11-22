@@ -18,6 +18,7 @@ setup(
     packages=find_packages(),
     install_requires=get_requirements(),
     extra_requires=extra_requires,
+    package_data={lib_name: ["swagger/*.yaml"]},
     python_requires=">=3.7",
     use_scm_version={"root": "..", "relative_to": __file__},
     setup_requires=["pip>=10", "setuptools>=40", "setuptools_scm"],
