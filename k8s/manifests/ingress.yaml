@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.org/ssl-services: demo-app
+  labels:
+    app: demo-app
+  name: demo-app
+  namespace: demo
+spec:
+  rules:
+  - host: demo-app-k8s.testowaplatforma123.net
+    http:
+      paths:
+      - backend:
+          serviceName: demo-app
+          servicePort: 8080
+        path: /

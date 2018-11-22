@@ -1,5 +1,4 @@
-# Base build image with dependencies
-FROM python:3.7.0-alpine3.8 as dependencies
+FROM python:3.7.0-alpine3.8
 
 RUN apk --no-cache add bash
 
