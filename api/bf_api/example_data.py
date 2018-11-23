@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from bf_shop.models import Client, Order, Product
+from bf_shop.entities import Client, Order, Product
 
 clients = [
     Client(id=1, name="Angelina Jolie"),

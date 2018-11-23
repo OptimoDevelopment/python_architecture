@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from bf_ram_db.ram_storage import RamStorage
 from bf_shop.exceptions import ProductNotFound
-from bf_shop.models import Product
+from bf_shop.entities import Product
 from bf_shop.providers import IProductProvider
 
 

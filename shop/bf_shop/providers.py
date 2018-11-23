@@ -2,7 +2,7 @@ import abc
 from datetime import datetime
 from typing import List, Optional
 
-from bf_shop.models import Client, Order, Product
+from bf_shop.entities import Client, Order, Product
 
 
 class IClientProvider(abc.ABC):

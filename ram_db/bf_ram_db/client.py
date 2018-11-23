@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from bf_ram_db.ram_storage import RamStorage
 from bf_shop.exceptions import ClientNotFound
-from bf_shop.models import Client
+from bf_shop.entities import Client
 from bf_shop.providers import IClientProvider
 
 

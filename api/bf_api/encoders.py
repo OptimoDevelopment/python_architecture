@@ -2,7 +2,7 @@ import datetime
 from json import JSONEncoder
 from typing import Any
 
-from bf_shop.models import Base, Client
+from bf_shop.entities import Base, Client
 
 
 class ApiJsonEncoder(JSONEncoder):

@@ -2,7 +2,7 @@ from typing import List
 
 from injector import inject
 
-from bf_shop.models import Order
+from bf_shop.entities import Order
 from bf_shop.providers import IClientProvider, IOrderProvider, IProductProvider
 
 

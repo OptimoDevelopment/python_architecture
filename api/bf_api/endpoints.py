@@ -1,7 +1,7 @@
 from typing import List
 
 from bf_shop.logic import OrderLogic
-from bf_shop.models import Order
+from bf_shop.entities import Order
 
 
 def search(logic: OrderLogic, client_id: int) -> List[Order]:
