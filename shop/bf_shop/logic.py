@@ -3,32 +3,32 @@ from typing import List
 from injector import inject
 
 from bf_shop.entities import Order
-from bf_shop.providers import IClientProvider, IOrderProvider, IProductProvider
+from bf_shop.repositories import IClientRepository, IOrderRepository, IProductRepository
 
 
 class OrderLogic:
     @inject
     def __init__(
         self,
-        order_provider: IOrderProvider,
-        product_provider: IProductProvider,
-        client_provider: IClientProvider,
+        orders: IOrderRepository,
+        products: IProductRepository,
+        clients: IClientRepository,
     ) -> None:
-        self._order_provider: IOrderProvider = order_provider
-        self._product_provider: IProductProvider = product_provider
-        self._client_provider: IClientProvider = client_provider
+        self._orders: IOrderRepository = orders
+        self._products: IProductRepository = products
+        self._clients: IClientRepository = clients
 
     def search(self, client_id: int) -> List[Order]:
-        client = self._client_provider.get(client_id)
-        return self._order_provider.search(client)
+        client = self._clients.get(client_id)
+        return self._orders.search(client)
 
     def create(self, client_id: int) -> Order:
-        client = self._client_provider.get(client_id)
-        return self._order_provider.create(client=client)
+        client = self._clients.get(client_id)
+        return self._orders.create(client=client)
 
     def add_product(self, order_id: int, product_id: int) -> Order:
-        order = self._order_provider.get(order_id)
-        product = self._product_provider.get(product_id)
+        order = self._orders.get(order_id)
+        product = self._products.get(product_id)
 
         order.items.append(product)
         order.total_cost += product.price

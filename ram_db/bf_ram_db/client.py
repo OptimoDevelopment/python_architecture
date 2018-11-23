@@ -1,12 +1,12 @@
 from typing import List, Optional
 
 from bf_ram_db.ram_storage import RamStorage
-from bf_shop.exceptions import ClientNotFound
 from bf_shop.entities import Client
-from bf_shop.providers import IClientProvider
+from bf_shop.exceptions import ClientNotFound
+from bf_shop.repositories import IClientRepository
 
 
-class ClientProvider(IClientProvider):
+class ClientRepositories(IClientRepository):
     def __init__(self, static_data: Optional[List[Client]] = None) -> None:
         self._ram_storage = RamStorage[Client]()
 
